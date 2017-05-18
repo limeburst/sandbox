@@ -1,0 +1,324 @@
+% !TEX encoding = UTF-8 Unicode
+
+\documentclass{beamer}
+
+\usepackage{kotex}
+\usepackage{color}
+\usepackage{listings}
+\lstset{
+    basicstyle=\tiny
+}
+
+\title{Clean Code}
+\subtitle{3주차: 형식 맞추기 \& 객체와 자료구조}
+\author{서지혁}
+\institute{리디북스 스토어팀}
+\date{2017년 5월 17일}
+
+\begin{document}
+
+\frame{\titlepage}
+
+\begin{frame}
+    \frametitle{형식 맞추기의 목적}
+    \framesubtitle{형식 맞추기, 왜 하는가?}
+    \begin{itemize}
+        \item because \emph{important!}
+        \item 형식 맞추기는 의사 소통을 위한 것
+        \item 코딩 스타일과 가독성이 곧 지속 가능성과 확장 가능성
+        \item 그래서, 형식을 어떻게 맞춰야 의사 소통을 잘 할 수 있을까?
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{형식 맞추기 (Formatting)}
+    \begin{itemize}
+        \item 수직 포매팅
+        \item 수평 포매팅
+        \item `밥' 형님의 포매팅 규칙
+        \item 팀 규칙
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 포매팅 (Vertical Formatting)}
+    \begin{itemize}
+        \item `신문' 비유
+        \item 수직 공간
+        \item 수직 밀도
+        \item 수직 거리
+        \item 수직 순서
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{`신문' 비유} 
+    \begin{itemize}
+        \item 코드를 잘 짜여진 신문 기사처럼 짜자
+        \item 파일명만으로도 우리가 보고 싶은 파일인지 알 수 있게
+        \item 파일 시작 부분에는 고수준의 개념과 알고리즘
+        \item 아래로 내려갈수록 디테일하게
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 공간}
+    \begin{itemize}
+        \item 거의 모든 코드는 왼쪽에서 오른쪽으로, 위에서 아래로 읽힌다
+        \item 코드 한 줄 한 줄은 하나의 완전한 사고를 이루어야 함
+        \item 각각의 이러한 사고들은 빈 줄로 분리되어야 함
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 공간}
+    \framesubtitle{Clean Code}
+    \lstinputlisting[language=Java]{clean/BoldWidget.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 공간}
+    \framesubtitle{Dirty Code}
+    \lstinputlisting[language=Java]{dirty/BoldWidget.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 밀도}
+    \begin{itemize}
+        \item 수직 공간이 개념을 분리한다면
+        \item 수직 밀도는 밀접한 관계를 다룬다
+        \item 쓸 데 없는 내용으로 밀접해야 할 관계를 벌리지 말자
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 밀도}
+    \framesubtitle{Clean Code}
+    \lstinputlisting[language=Java]{clean/ReporterConfig.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 밀도}
+    \framesubtitle{Dirty Code}
+    \lstinputlisting[language=Java]{dirty/ReporterConfig.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 거리}
+    \begin{itemize}
+        \item 코드의 의도를 읽을 시간에 코드의 위치를 찾게 하지 말자
+        \item 연관된 코드는 수직 거리를 최소한으로, 서로 가까이 두자
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 거리: 변수 선언}
+    \framesubtitle{변수는 사용처와 최대한 가까이에 선언하기}
+    \lstinputlisting[language=Java]{clean/readPreferences.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 거리: 변수 선언}
+    \framesubtitle{루프 제어 변수는 루프 선언문 안에서 선언하기}
+    \lstinputlisting[language=Java]{clean/countTestCases.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 거리: 인스턴스 변수}
+    \framesubtitle{한 장소에 모아 두자}
+    \lstinputlisting[language=Java]{clean/TestSuite.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 거리: 의존 함수}
+    \framesubtitle{호출되는 함수는 호출하는 함수 아래 가까이}
+    \lstinputlisting[language=Java]{clean/WikiPageResponder.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 거리: 개념적 유사성}
+    \framesubtitle{유사한 개념일수록 수직 거리를 가까이}
+    \lstinputlisting[language=Java]{clean/Assert.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수직 순서}
+    \begin{itemize}
+        \item 함수 호출 의존성이 아래로 향하게
+        \item 호출되는 함수가 호출하는 함수 아래에
+        \item 신문 기사처럼, 디테일을 아래쪽에 두자
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수평 포매팅 (Horizontal Formatting)}
+    \begin{itemize}
+        \item 수평 밀도
+        \item 수평 정렬
+        \item 들여쓰기
+        \item 더미 스코프
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수평 밀도}
+    \framesubtitle{수평 밀도를 통해 개념의 밀접도를 구분}
+    \lstinputlisting[language=Java]{clean/measureLine.java}
+    \lstinputlisting[language=Java]{clean/Quadratic.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수평 정렬}
+    \framesubtitle{Dirty Code}
+    \lstinputlisting[language=Java]{dirty/FitNesseExpediter.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{수평 정렬}
+    \framesubtitle{Clean Code}
+    \lstinputlisting[language=Java]{clean/FitNesseExpediter.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{들여쓰기}
+    \framesubtitle{Dirty Code}
+    \lstinputlisting[language=Java]{dirty/FitNesseServer.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{들여쓰기}
+    \framesubtitle{Clean Code}
+    \lstinputlisting[language=Java]{clean/FitNesseServer.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{더미 스코프}
+    \framesubtitle{Clean Code}
+    \lstinputlisting[language=Java]{clean/dummyscope.java}
+    \begin{itemize}
+        \item 가끔 while이나 for문의 내용이 더미일 때가 있음
+        \item 웬만해선  이런 코드를 작성하는 건 피하자
+        \item 꼭 필요할 땐 루프라는 사실을 명확히 하자
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{`밥' 형님의 포매팅 규칙}
+\end{frame}
+
+\begin{frame}
+    \frametitle{팀 규칙}
+    \begin{itemize}
+        \item 누구나 자기만의 취향이 있지만
+        \item 좋은 프로그래머 = 팀 플레이어
+        \item 팀 단위의 규칙을 IDE 코드 포매터에 적용
+        \item 가장 중요한 것은 일관성을 지키는 것
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조}
+    \begin{itemize}
+        \item 구현 디테일이 노출되고, 그것에 의존하는 코드가 생기는 것을 피하기 위해  프라이빗 변수를 사용한다
+        \item 그럼 대체 왜 객체에 getter와 setter를 만들어서 프라이빗 변수를 노출시키나요?
+        \item 다음 페이지에! 공개됩니다
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 데이터 추상화}
+    \framesubtitle{구현을 숨기는 건 추상화를 위한 것이다}
+    \lstinputlisting[language=Java]{objects/ConcretePoint.java}
+    \lstinputlisting[language=Java]{objects/AbstractPoint.java}
+    \begin{itemize}
+        \item 두 번째 예제가 아름다운 이유는 구현이 사각형인지 극좌표인지 모르지만, 분명 자료구조를 표현하기 때문
+        \item 더 나아가, 자료구조 그 이상을 표현한다:
+            \begin{itemize}
+                \item 접근 권한 설정
+                \item 각 좌표를 따로 읽을 수 있지만
+                \item 좌표 설정은 한꺼번에 같이 해야 한다
+            \end{itemize}
+        \item 구현을 숨기는건 변수를 메서드로 숨기기 위한 것이 아니라 추상화를 위한 것
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 데이터/객체의 비대칭성}
+    \framesubtitle{Procedural: 새 도형을 추가하고 싶다면 Geometry 클래스 함수를 모두 고쳐야 한다}
+    \lstinputlisting[language=Java]{objects/ProceduralShape.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 데이터/객체의 비대칭성}
+    \framesubtitle{Polymorphic: 새 함수를 추가하고 싶다면 도형 클래스 전부를 고쳐야 한다}
+    \lstinputlisting[language=Java]{objects/PolymorphicShape.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 데이터/객체의 비대칭성}
+    \begin{itemize}
+        \item 객체는 데이터를 추상화 뒤에 숨기고, 데이터를 조작하기 위한 함수를 노출한다
+        \item 자료구조는 데이터를 노출하고, 별다른 기능이 없다
+        \item 객체와 자료구조는 서로를 보완하는 관계
+        \item 두 개의 차이와 각각의 장단점을 아는 것이 중요
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 디미터의 법칙}
+    \framesubtitle{모듈은 자신이 조작하는 객체의 내부 구현을 몰라야 한다}
+    ``클래스 C의 메소드 f는 다음 객체의 메소드만 호출해야 한다''
+    \begin{itemize}
+        \item 클래스 C
+        \item f가 생성한 객체
+        \item f 인수로 넘어온 객체
+        \item C 인스턴스 변수에 저장된 객체
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 디미터의 법칙}
+    \framesubtitle{모듈은 자신이 조작하는 객체의 내부 구현을 몰라야 한다}
+    기차 충돌:
+    \lstinputlisting[language=Java]{demeter/1.java}
+    코드 나누기:
+    \lstinputlisting[language=Java]{demeter/2.java}
+    디미터 법칙을 거론할 필요가 없는 코드:
+    \lstinputlisting[language=Java]{demeter/3.java}
+    반 객체 반 자료구조인 잡종 구조를 다룰 때 머리가 아파지기 시작한다...
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 디미터의 법칙}
+    \framesubtitle{모듈은 자신이 조작하는 객체의 내부 구현을 몰라야 한다}
+    모두 객체라면 어떨까?
+    \\~\\
+    구조 감추기:
+    \lstinputlisting[language=Java]{demeter/4.java}
+    추상화 수준을 뒤섞어 놓음:
+    \lstinputlisting[language=Java]{demeter/5.java}
+    Clean Code:
+    \lstinputlisting[language=Java]{demeter/6.java}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료구조: 자료 전달 객체}
+    \begin{itemize}
+        \item 공개 변수만 있고 함수가 없는 클래스
+        \item `Data Transfer Object' 로 불리기도 함
+        \item 데이터베이스 통신이나 소켓 메시지를 파싱할 때 사용됨
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{객체와 자료 구조: 결론}
+    \begin{itemize}
+        \item 객체는 행위를 드러내고, 데이터는 숨긴다
+        \item 자료 구조는 데이터를 드러내고, 별다른 기능이 없다
+        \item 객체에는 새로운 데이터 타입을 추가하기가 쉽다
+        \item 자료 구조에는 새로운 기능을 추가하기가 쉽다
+        \item 문제 해결을 위한 최적의 방식을 편견 없이 고르는 것이 중요
+    \end{itemize}
+\end{frame}
+
+\end{document}
