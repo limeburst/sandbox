@@ -28,6 +28,11 @@ VM: {
 $ sudo dnf install \
     google-noto-cjk-fonts \
     ibus-hangul
+```
 
+
+## personal
+
+```
 $ ibus-setup
 ```
