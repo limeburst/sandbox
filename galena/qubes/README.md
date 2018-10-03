@@ -29,7 +29,8 @@ $ sudo dnf install \
     automake \
     gmp-devel \
     google-noto-cjk-fonts \
-    ibus-hangul
+    ibus-hangul \
+    ncurses-devel
 ```
 
 
