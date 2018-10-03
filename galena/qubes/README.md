@@ -26,6 +26,8 @@ VM: {
 
 ```
 $ sudo dnf install \
+    automake \
+    gmp-devel \
     google-noto-cjk-fonts \
     ibus-hangul
 ```
@@ -35,4 +37,5 @@ $ sudo dnf install \
 
 ```
 $ ibus-setup
+$ curl -sSL https://get.haskellstack.org/ | sh
 ```
