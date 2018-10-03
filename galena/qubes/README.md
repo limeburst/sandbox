@@ -6,7 +6,8 @@
 $ sudo qubes-dom0-update \
     google-noto-cjk-font \
     i3 \
-    i3-settings-qubes
+    i3-settings-qubes \
+    qubes-template-fedora-28
 ```
 
 
@@ -21,7 +22,7 @@ VM: {
 ```
 
 
-## fedora-26-korean
+## fedora-28-korean
 
 ```
 $ sudo dnf install \
